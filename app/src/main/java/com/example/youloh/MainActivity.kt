@@ -1,11 +1,12 @@
 package com.example.youloh
 
+import android.app.AlertDialog
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import kotlin.random.Random
 
 
@@ -53,10 +54,41 @@ class MainActivity : AppCompatActivity() {
         val button: Button = view as Button
         button.text = "ТЫ ЛОХ !!!"
         button.setBackgroundColor(Color.RED)
+        val builder = AlertDialog.Builder(this@MainActivity)
+        builder.setTitle("Поздравляю - ТЫ ЛОХ !!!")
+        builder.setMessage("Начать игру заново ?")
+        builder.setPositiveButton("YES") { dialog, which ->
+// Действия при нажатии кнопки соглашения в диалоге: всплывающее сообщение и смена цвета фона                 Toast.makeText(applicationContext,"Ok, we change the app background.",Toast.LENGTH_SHORT).show()
+         var i =1
+          for (it in buttons){
+              it.setBackgroundColor(Color.GRAY)
+              it.text = "КНОПКА"+i
+              i++
+          }
+          /*  buttons.forEach {
+                it.setBackgroundColor(Color.GRAY)
+                it.text = "КНОПКА"
+                // it.setOnClickListener(::newGame)
+            }
 
+           */
+        }
+        /*
+        builder.setNegativeButton("No") { dialog, which ->
+            Toast.makeText(applicationContext, "Нет - пидора ответ", Toast.LENGTH_SHORT).show()
+        }
+         */
+        builder.setNeutralButton("Выйти из приложения") { _, _ ->
+            Toast.makeText(applicationContext, "Ну и пошёл нахуй", Toast.LENGTH_SHORT)
+                .show()
+            finishAffinity()
+        }
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
         val random2 = Random.nextInt(12)
         random = random2
     }
 }
+
 
 
