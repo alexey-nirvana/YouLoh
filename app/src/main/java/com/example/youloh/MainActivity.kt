@@ -14,11 +14,13 @@ class MainActivity : AppCompatActivity() {
     private val COUNT_OF_BUTTONS = 12
     private var random = Random.nextInt(COUNT_OF_BUTTONS)
     private var buttons = emptyList<Button>()
+    private lateinit var soundController: SoundController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupButtons()
+        soundController = SoundController(this)
     }
 
     private fun setupButtons() {
@@ -55,6 +57,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun popal(view: View) {
+        soundController.playRandomSound()
         val button: Button = view as Button
         button.text = "ТЫ ЛОХ !!!"
         button.setBackgroundColor(Color.RED)
