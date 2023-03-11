@@ -36,7 +36,11 @@ class MainActivity : AppCompatActivity() {
             findViewById(R.id.button11),
             findViewById(R.id.button12),
         )
-        buttons.forEach { it.setOnClickListener(::checkImLoh) }
+
+        for (i in buttons){
+            i.setOnClickListener{ checkImLoh(view = it) }
+        }
+      //  buttons.forEach { it.setOnClickListener(::checkImLoh) }
     }
 
     private fun checkImLoh(view: View) {
@@ -59,19 +63,19 @@ class MainActivity : AppCompatActivity() {
         builder.setMessage("Начать игру заново ?")
         builder.setPositiveButton("YES") { dialog, which ->
 // Действия при нажатии кнопки соглашения в диалоге: всплывающее сообщение и смена цвета фона                 Toast.makeText(applicationContext,"Ok, we change the app background.",Toast.LENGTH_SHORT).show()
-         var i =1
-          for (it in buttons){
-              it.setBackgroundColor(Color.GRAY)
-              it.text = "КНОПКА"+i
-              i++
-          }
-          /*  buttons.forEach {
+            var i = 1
+            for (it in buttons) {
                 it.setBackgroundColor(Color.GRAY)
-                it.text = "КНОПКА"
-                // it.setOnClickListener(::newGame)
+                it.text = "КНОПКА" + i
+                i++
             }
+            /*  buttons.forEach {
+                  it.setBackgroundColor(Color.GRAY)
+                  it.text = "КНОПКА"
+                  // it.setOnClickListener(::newGame)
+              }
 
-           */
+             */
         }
         /*
         builder.setNegativeButton("No") { dialog, which ->
