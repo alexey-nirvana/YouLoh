@@ -39,10 +39,10 @@ class MainActivity : AppCompatActivity() {
             findViewById(R.id.button12),
         )
 
-        for (i in buttons){
-            i.setOnClickListener{ checkImLoh(view = it) }
+        for (i in buttons) {
+            i.setOnClickListener { checkImLoh(view = it) }
         }
-      //  buttons.forEach { it.setOnClickListener(::checkImLoh) }
+        //  buttons.forEach { it.setOnClickListener(::checkImLoh) }
     }
 
     private fun checkImLoh(view: View) {
@@ -91,6 +91,7 @@ class MainActivity : AppCompatActivity() {
             finishAffinity()
         }
         val dialog: AlertDialog = builder.create()
+        dialog.setCanceledOnTouchOutside(false)
         dialog.show()
         val random2 = Random.nextInt(12)
         random = random2
